@@ -19,7 +19,7 @@ export default {
 		getData() {
 			let that = this;
 			this.$http.get( '/user')
-			.then(function(res) {
+			.then(res => {
 				that.a = res.data.data;
 			})
 			.catch(err => {
