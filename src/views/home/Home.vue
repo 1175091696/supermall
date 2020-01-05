@@ -4,68 +4,72 @@
 		<navBar class="home-nav">
 			<div slot="center">购物街</div>		
 		</navBar>
+		<Scroll class="content">
 			<RecommendView :recommends="recommends" />
 			<FeatureView />
 			<TabControl :titles="['流行', '新款', '精选']" class="title" @tabClick="tabClick" />
 			<GoodsList :goods="showGoods"></GoodsList>
-			
-			<ul>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-				<li>列表</li>
-			</ul>
+		</Scroll>
+		
+		<ul>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+			<li>列表</li>
+		</ul>
 	</div>
 </template>
 
 <script>
-	import navBar from "components/common/navbar/navBar"	
+	import navBar from "components/common/navbar/navBar"
+	import Scroll from "components/common/scroll/Scroll"
+
 	import TabControl from "components/content/tabControl/TabControl"
 	import GoodsList from "components/content/goods/GoodsList"
 	
@@ -78,6 +82,7 @@
 		name: 'home',
 		components: {
 		navBar,
+		Scroll,
 		TabControl,
 		GoodsList,
 
@@ -149,7 +154,8 @@
 
 <style scoped>
 	#home {
-		padding-top: 44px;
+		/*padding-top: 44px;*/
+		height: 100vh;
 	}
 	.home-nav {
 		background: var(--color-tint);
@@ -166,5 +172,11 @@
 		position: sticky; 
 		/*sticky会在滚动到设置的值时变为fixed，兼容性差，移动端比较适合*/
 		top: 44px;
+	}
+
+	.content {
+		height: calc(100% - 50px);
+		overflow: hidden;
+		margin-top: 45px
 	}
 </style>
