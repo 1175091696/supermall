@@ -1,16 +1,21 @@
 <template>
-	<div>
-		<h2 v-for="item in a">{{item.data}}</h2>
+	<div class="main">
+		<!-- <h2 v-for="item in a">{{item.data}}</h2> -->
+		<TabBar></TabBar>
 	</div>
 </template>
 
 <script>
+import TabBar from "./content/MainTabBar.vue"
 export default {
 	name: 'Main',
 	data() {
 		return {
 			a: []
 		}
+	},
+	components: {
+		TabBar
 	},
 	mounted() {
 		this.getData()

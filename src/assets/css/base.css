@@ -1,5 +1,6 @@
 @import "./normalize.css";
 
+/*获取根元素html，定义以下变量（css定义变量的方法）*/
 :root {
 	--color-text: #666;
 	--color-high-text: #ff5777;
@@ -18,4 +19,32 @@
 
 body {
 	font-family: 'Avenir', Helvetica, Arial, sans-serif;
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
+	background: var(--color-background);
+	color: var(--color-text);
+	width: 100vw;
+}
+
+a {
+	color: var(--color-text);
+	text-decoration: none;
+}
+
+.clear-fix::after {
+	clear: both;
+	content: '';
+	display: block;
+}
+
+.clear-fix {
+	zoom: 1;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
 }
