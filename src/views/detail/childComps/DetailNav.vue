@@ -1,7 +1,10 @@
 <template>
 	<div id="DetailNav">
 		<NavBar>
-			<div slot="center">详情页</div>
+			<div slot="left" @click="backClick">&lt</div>
+			<div slot="center" class="title">
+				<div class="titleItem" v-for="(item, index) in titles" :class="{active: index === currentIndex}" @click="titleClick(index)">{{item}}</div>
+			</div>
 		</NavBar>
 	</div>
 	
@@ -13,7 +16,9 @@ export default {
 	name: 'DetailNav',
 	data() {
 		return {
-			id: null
+			id: null,
+			titles: ['商品', '参数', '评论', '推荐'],
+			currentIndex: 0
 		}
 	},
 	components: {
@@ -21,7 +26,29 @@ export default {
 	},
 	created() {
 		this.id = this.$route.params.id
+	},
+	methods: {
+		titleClick(index) {
+			this.currentIndex = index;
+		},
+		backClick() {
+			this.$router.back()
+		}
+	}
+};
+</script>
+
+<style>
+	.title{
+		display: flex;
+		font-size: 13px;
 	}
 
-}
-</script>
+	.titleItem {
+		flex: 1;
+	}
+
+	.active {
+		color: var(--color-high-text);
+	}
+</style>
