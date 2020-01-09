@@ -33,22 +33,33 @@
 				pullUpLoad: this.pullUpLoad
 			});
 			// 监听滚动位置
-			this.scroll.on('scroll', (position) => {
-				// console.log(position)
-				this.$emit('scroll', position)
-			});
-			// 监听上啦事件
-			this.scroll.on('pullingUp', () => {
-				// console.log('2')
-				this.$emit('pullingUp');
-				setTimeout(() => {
-					this.scroll.finishPullUp()
-				},2000)
-			})
+			if (this.probeType === 2 || this.probeType === 3) { 
+				this.scroll.on('scroll', (position) => {
+					// console.log(position)
+					this.$emit('scroll', position)
+				})
+			};
+			// 监听上拉事件
+			if (this.pullUpLoad) { 
+				this.scroll.on('pullingUp', () => {
+					// console.log('上拉事件')
+					this.$emit('pullingUp');
+					setTimeout(() => {
+						this.scroll.finishPullUp()
+					},2000)
+				})
+			};
 		},
 		methods: {
 			scrollTo(x, y, time = 300) {
-				this.scroll.scrollTo(x, y, time)
+				this.scroll && this.scroll.scrollTo(x, y, time)
+			},
+			refresh() {
+				this.scroll && this.scroll.refresh()
+				// console.log('图片加载')
+			},
+			getScrollY() {
+				return this.scroll ? this.scroll.y : 0
 			}
 		}
 	};

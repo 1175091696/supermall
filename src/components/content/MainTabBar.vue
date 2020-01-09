@@ -14,7 +14,7 @@
         <div slot="item-text">我的</div>
       </tabBarItem>
     </tabBar>
-    <router-view></router-view>
+    
   </div>
 </template>
 

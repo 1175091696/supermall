@@ -80,7 +80,7 @@
 <style>
 	.wrapper {
 		height: 150px;
-		background-color: red;
+		/*background-color: red;*/
 		overflow: hidden;
 		/*overflow-y: scroll;*/
 	}

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/home/Home.vue'
-
+const Detail = () => import('views/detail/Detail.vue')
 Vue.use(VueRouter)
 
 const routes = [
@@ -42,6 +42,14 @@ const routes = [
     component: () => import('views/Mine.vue'),
     meta: {
       title: '我的'
+    }
+  },
+  {
+    path: '/Detail/:id',
+    name: 'Detail',
+    component: Detail,
+    meta: {
+      title: '详情'
     }
   },
 ]

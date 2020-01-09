@@ -1,6 +1,6 @@
 <template>
-	<div class="goodsItem">
-		<img :src="goodsItem.img" alt="">
+	<div class="goodsItem" @click="itemClick">
+		<img :src="goodsItem.img" alt="" @load="imageLoad">
 		<div class="info">
 			<p>{{goodsItem.title}}</p>
 			<span class="price">{{goodsItem.price}}</span>
@@ -20,6 +20,17 @@
 				}
 			}
 		},
+		methods: {
+			// 监听图片加载
+			imageLoad() {
+				// 事件总线，类似于vuex
+				this.$bus.$emit('itemImageLoad')
+			},
+			itemClick() {
+				this.$router.push('./Detail/' + this.goodsItem.id)
+				console.log(this.goodsItem.id)
+			}
+		}
 	};
 </script>
 
