@@ -7,7 +7,7 @@
       <tabBarItem path="/about" activeColor="blue">
         <div slot="item-text">分类</div>
       </tabBarItem>
-      <tabBarItem path="/User" activeColor="green">
+      <tabBarItem path="/Cart" activeColor="green">
         <div slot="item-text">购物车</div>
       </tabBarItem>
       <tabBarItem path="/Mine" activeColor="yellow">

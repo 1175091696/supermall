@@ -29,9 +29,9 @@ const routes = [
     },
   },
   {
-    path: '/User/:userId',
-    name: 'User',
-    component: () => import('views/User.vue'),
+    path: '/Cart',
+    name: 'Cart',
+    component: () => import('views/cart/Cart.vue'),
     meta: {
       title: '用户'
     },

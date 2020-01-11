@@ -18,14 +18,14 @@
 			<GoodsList :goods="showGoods"></GoodsList>
 		</Scroll>
 		
-		<BackTop @click.native="backClick" v-show="isShowTop" />
+		<BackTop @click.native="backClick" v-show="isShowBackTop" />
 	</div>
 </template>
 
 <script>
 	import navBar from "components/common/navbar/navBar"
 	import Scroll from "components/common/scroll/Scroll"
-	import BackTop from "components/common/backTop/BackTop"
+	// import BackTop from "components/common/backTop/BackTop"
 
 	import TabControl from "components/content/tabControl/TabControl"
 	import GoodsList from "components/content/goods/GoodsList"
@@ -35,19 +35,22 @@
 	
 	import {getHomeData, getHomeGoods} from "network/resData/home.js"
 	import {debounce} from "common/utils.js"
+	import {itemListenerMixin,backTopMixin} from "common/mixin.js"
 
 	export default {
 		name: 'home',
 		components: {
 		navBar,
 		Scroll,
-		BackTop,
+		// BackTop,
 		TabControl,
 		GoodsList,
 
 		RecommendView,
 		FeatureView,
 		},
+		//混入封装
+		mixins: [itemListenerMixin,backTopMixin],
 		data() {
 			return {
 				// banners: [],
@@ -58,7 +61,7 @@
 		      "sell": {page: 0, list: []},
 		    },
 		    currentType: 'pop',
-		    isShowTop: false,
+		    // isShowBackTop: false,
 		    tabOffsetTop: 0,
 		    isTabFixed: false,
 		    saveY: 0
@@ -78,10 +81,11 @@
 		},
 		mounted() {
 			// 监听item中图片加载完成与否
-			const refresh = debounce(this.$refs.scroll.refresh, 1000)
-			this.$bus.$on('itemImageLoad', () => {			
-				refresh()
-			})
+			// const refresh = debounce(this.$refs.scroll.refresh, 1000)
+			// this.$bus.$on('itemImageLoad', () => {			
+			// 	refresh()
+			// })
+			// 改为从mixin混入
 		},
 		destroyed() {
 			// 测试路由是否销毁
@@ -132,16 +136,16 @@
 				}				
 			},
 			// 组件backTop监听事件
-			backClick() {
-				// 通过ref父组件1.直接访问scroll组件的scroll的scrollTo事件，2。直接使用scrollTo事件
-				// this.$refs.scroll.scroll.scrollTo(0,0)
-				this.$refs.scroll.scrollTo(0,0,1000)
-			},
+			// backClick() {
+			// 	// 通过ref父组件1.直接访问scroll组件的scroll的scrollTo事件，2。直接使用scrollTo事件
+			// 	// this.$refs.scroll.scroll.scrollTo(0,0)
+			// 	this.$refs.scroll.scrollTo(0,0,1000)
+			// },
 			// 监听滚动
 			contentScroll(position) {
 				// 判断BackTop是否显示
-				// console.log(position)
-				this.isShowTop = (-position.y) > 1000;
+				// this.listenShowBackTop = -position.y > BACK_POSITION
+				this.listenShowBackTop(position);
 				// 决定tabControl是否吸顶（position: fix)
 				this.isTabFixed = (-position.y) > this.tabOffsetTop
 			},
