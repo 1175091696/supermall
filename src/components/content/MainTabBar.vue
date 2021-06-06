@@ -1,8 +1,8 @@
 <template>
-  <div>    
+  <div>
     <tabBar>
       <tabBarItem path="/Home" >
-        <div slot="item-text">首页</div>
+        <div slot="item-text">首页11</div>
       </tabBarItem>
       <tabBarItem path="/about" activeColor="blue">
         <div slot="item-text">分类</div>
@@ -14,7 +14,7 @@
         <div slot="item-text">我的</div>
       </tabBarItem>
     </tabBar>
-    
+
   </div>
 </template>
 
